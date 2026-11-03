@@ -27,11 +27,15 @@
 </a>
 </div>
 
-# What is LibrePods?
+<a id="what-is-librepods"></a>
 
-LibrePods allows you to use AirPods features that are exclusive to Apple devices. It implements the proprietary protocol used to exchange data between AirPods and Apple devices, enabling features like changing noise control modes, fast ear detection, accurate battery status, head gestures, conversational awareness, and more on non-Apple platforms.
+# 🔹 What is LibrePods?
 
-# Feature availability
+🎧 LibrePods allows you to use AirPods features that are exclusive to Apple devices. It implements the proprietary protocol used to exchange data between AirPods and Apple devices, enabling features like changing noise control modes, fast ear detection, accurate battery status, head gestures, conversational awareness, and more on non-Apple platforms.
+
+<a id="feature-availability"></a>
+
+# ✨ Feature availability
 
 | Feature                                                     | Linux | Android |
 | ----------------------------------------------------------- | ----- | ------- |
@@ -61,76 +65,102 @@ LibrePods allows you to use AirPods features that are exclusive to Apple devices
 | ⛔     | Will not be implemented                                             |
 | ❓     | Unknown                                                             |
 
-## Find My
+<a id="find-my"></a>
 
-The following features related to Find My are planned, but require further RE and might need root on Android:
+## 🔹 Find My
 
-- Add your AirPods to the Find My network
-- Play sound through charging case to find it
-- Notify when leaving behind
-- Toggle case charging sounds
+✨ The following features related to Find My are planned, but require further RE and might need root on Android:
 
-## Spatial Audio
+- 🔹 Add your AirPods to the Find My network
+- 🔹 Play sound through charging case to find it
+- 🔹 Notify when leaving behind
+- 🔹 Toggle case charging sounds
 
-The app does not currently provide head tracking information to Android for the OS to perform HRTF. This has not been explored completely, and it might need root. 
+<a id="spatial-audio"></a>
 
-Spatializing stereo sound is beyond this project's scope and will never be available. Many OEMs have an implementation of their own for this.
+## 🔹 Spatial Audio
 
-## Heart Rate Monitoring (AirPods Pro 3 and later)
+🔹 The app does not currently provide head tracking information to Android for the OS to perform HRTF. This has not been explored completely, and it might need root.
+
+🔹 Spatializing stereo sound is beyond this project's scope and will never be available. Many OEMs have an implementation of their own for this.
+
+<a id="heart-rate-monitoring-airpods-pro-3-and-later"></a>
+
+## 🔹 Heart Rate Monitoring (AirPods Pro 3 and later)
 This is being worked upon, check the #⁠reverse-engineering channel on the LibrePods Discord server for more information. If it is ever implemented, it will most likely need root on Android.
 
-## High quality two-way audio
+<a id="high-quality-two-way-audio"></a>
+
+## 🔹 High quality two-way audio
 On iOS/iPadOS, you can continue using A2DP while AirPods send the audio stream from its microphone over AACP. 
 
-Since this needs deeper integration with audio on Android, it will most likely need root.
+🔹 Since this needs deeper integration with audio on Android, it will most likely need root.
 
-# Installation
+<a id="installation"></a>
 
-- [**Android**](/android/README.md)
-- [**Linux**](/linux/README.md)
+# 📦 Installation
 
-# VendorID Spoofing
+- 📚 [**Android**](/android/README.md)
+- 📚 [**Linux**](/linux/README.md)
 
-Turns out, if you change the VendorID in DID Profile to that of Apple, you get access to several special features!
+<a id="vendorid-spoofing"></a>
 
-You can do this on Linux by editing the DeviceID in `/etc/bluetooth/main.conf`. Add this line to the config file `DeviceID = bluetooth:004C:0000:0000`. For android you can enable the `act as Apple device` setting in the app's settings (shown only when Xposed is available and LibrePods module is enabled).
+# 🔹 VendorID Spoofing
 
-## Multi-device Connectivity
+📁 Turns out, if you change the VendorID in DID Profile to that of Apple, you get access to several special features!
 
-Upto two devices can be simultaneously connected to AirPods, for audio and control both. Seamless connection switching. The same notification shows up on Apple device when Android takes over the AirPods as if it were an Apple device ("Move to iPhone"). Android also shows a popup when the other device takes over.
+⚙️ You can do this on Linux by editing the DeviceID in `/etc/bluetooth/main.conf`. Add this line to the config file `DeviceID = bluetooth:004C:0000:0000`. For android you can enable the `act as Apple device` setting in the app's settings (shown only when Xposed is available and LibrePods module is enabled).
 
-## Accessibility Settings and Hearing Aid
+<a id="multi-device-connectivity"></a>
 
-Accessibility settings like customizing transparency mode (amplification, balance, tone, conversation boost, and ambient noise reduction), and loud sound reduction can be configured.
+## 🔹 Multi-device Connectivity
 
-All hearing aid customizations can be done from Android (linux soon), including setting the audiogram result. The app doesn't provide a way to take a hearing test because it requires much more precision. It is much better to use an already available audiogram result. 
+💡 Upto two devices can be simultaneously connected to AirPods, for audio and control both. Seamless connection switching. The same notification shows up on Apple device when Android takes over the AirPods as if it were an Apple device ("Move to iPhone"). Android also shows a popup when the other device takes over.
 
-# Protocol and Reverse Engineering
+<a id="accessibility-settings-and-hearing-aid"></a>
 
-Please refer to the Wireshark dissector plugin by Nojus ([@pabloaul](https://github.com/pabloaul)) for more information on the protocols used: [pabloaul/apple-wireshark](https://github.com/pabloaul/apple-wireshark)
+## ⚙️ Accessibility Settings and Hearing Aid
 
-The dissector had not been used in LibrePods for most of the implementation; I had reverse engineered the protocol myself before this dissector was made. But many (future) features including two-way high quality audio and spatial audio would not have been possible without their RE efforts!
+⚙️ Accessibility settings like customizing transparency mode (amplification, balance, tone, conversation boost, and ambient noise reduction), and loud sound reduction can be configured.
 
-# Use of AI
+🧪 All hearing aid customizations can be done from Android (linux soon), including setting the audiogram result. The app doesn't provide a way to take a hearing test because it requires much more precision. It is much better to use an already available audiogram result.
 
-## Android app
+<a id="protocol-and-reverse-engineering"></a>
 
-These parts of the app were completely AI-generated: 
-- Head Gestures - all of it, including logic and the UI
-- The offset setup with r2+the xposed module (both versions)
-- Troubleshooter and LogCollector
+# 🔹 Protocol and Reverse Engineering
 
-Rest everything- the background service, the Bluetooth manager classes (AACP and ATT), the entire UI, even the smallest components were written manually.
+🌐 Please refer to the Wireshark dissector plugin by Nojus ([@pabloaul](https://github.com/pabloaul)) for more information on the protocols used: [pabloaul/apple-wireshark](https://github.com/pabloaul/apple-wireshark)
 
-Some parts of the UI components were borrowed from [Kyant0's demo app](https://github.com/Kyant0/AndroidLiquidGlass/tree/master/catalog), which is licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+✨ The dissector had not been used in LibrePods for most of the implementation; I had reverse engineered the protocol myself before this dissector was made. But many (future) features including two-way high quality audio and spatial audio would not have been possible without their RE efforts!
 
-## Linux (rewrite)
+<a id="use-of-ai"></a>
 
-The `aacp.rs` and the `att.rs` files were translated from Kotlin to Rust with AI. Some parts of the `media_controller.rs` file, mainly the pulse integration, was also AI-generated.
+# 🔹 Use of AI
 
-# Supporters
+<a id="android-app"></a>
 
-A huge thank you to everyone supporting the project!
+## 🔹 Android app
+
+🔹 These parts of the app were completely AI-generated:
+- 🔹 Head Gestures - all of it, including logic and the UI
+- 🔹 The offset setup with r2+the xposed module (both versions)
+- 🔹 Troubleshooter and LogCollector
+
+🔹 Rest everything- the background service, the Bluetooth manager classes (AACP and ATT), the entire UI, even the smallest components were written manually.
+
+📜 Some parts of the UI components were borrowed from [Kyant0's demo app](https://github.com/Kyant0/AndroidLiquidGlass/tree/master/catalog), which is licensed under [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+
+<a id="linux-rewrite"></a>
+
+## 🔹 Linux (rewrite)
+
+📁 The `aacp.rs` and the `att.rs` files were translated from Kotlin to Rust with AI. Some parts of the `media_controller.rs` file, mainly the pulse integration, was also AI-generated.
+
+<a id="supporters"></a>
+
+# 🤝 Supporters
+
+🤝 A huge thank you to everyone supporting the project!
 
 <table>
   <tr>
@@ -209,20 +239,26 @@ A huge thank you to everyone supporting the project!
   </tr>
 </table>
 
-# Special Thanks
-- @tyalie for making the first documentation on the protocol! ([tyalie/AAP-Protocol-Definition](https://github.com/tyalie/AAP-Protocol-Defintion))
-- @rithvikvibhu and folks over at lagrangepoint for helping with the hearing aid feature ([gist](https://gist.github.com/rithvikvibhu/45e24bbe5ade30125f152383daf07016))
-- @devnoname120 for helping with the first root patch
-- @timgromeyer for making the first version of the linux app
-- @hackclub for hosting [High Seas](https://highseas.hackclub.com) and [Low Skies](https://low-skies.hackclub.com)!
-- Of course, everyone who has contributed to the project in any way, including by testing, sharing feedback, or just showing interest!
+<a id="special-thanks"></a>
 
-# Alternates for other platforms:
-- CAPod - A companion app for AirPods on Android. ([play store](https://play.google.com/store/apps/details?id=eu.darken.capod) | [source code](https://github.com/d4rken-org/capod)). Use this if you're using Android version 16 QPR3 or below and are not rooted.
-- MagicPods for Steam Deck ([website](https://magicpods.app/steamdeck/))
-- MagicPods - if you're looking for "LibrePods for Windows"  ([ms store](https://apps.microsoft.com/store/detail/9P6SKKFKSHKM) [installer](https://magicpods.app/installer/MagicPods.appinstaller) | [website](https://magicpods.app/))
+# 🔹 Special Thanks
+- 🌐 @tyalie for making the first documentation on the protocol! ([tyalie/AAP-Protocol-Definition](https://github.com/tyalie/AAP-Protocol-Defintion))
+- ✨ @rithvikvibhu and folks over at lagrangepoint for helping with the hearing aid feature ([gist](https://gist.github.com/rithvikvibhu/45e24bbe5ade30125f152383daf07016))
+- 🔹 @devnoname120 for helping with the first root patch
+- 🔹 @timgromeyer for making the first version of the linux app
+- 🌐 @hackclub for hosting [High Seas](https://highseas.hackclub.com) and [Low Skies](https://low-skies.hackclub.com)!
+- 🧪 Of course, everyone who has contributed to the project in any way, including by testing, sharing feedback, or just showing interest!
 
-# Star History
+<a id="alternates-for-other-platforms"></a>
+
+# 🔹 Alternates for other platforms:
+- 🌐 CAPod - A companion app for AirPods on Android. ([play store](https://play.google.com/store/apps/details?id=eu.darken.capod) | [source code](https://github.com/d4rken-org/capod)). Use this if you're using Android version 16 QPR3 or below and are not rooted.
+- 🌐 MagicPods for Steam Deck ([website](https://magicpods.app/steamdeck/))
+- 📦 MagicPods - if you're looking for "LibrePods for Windows"  ([ms store](https://apps.microsoft.com/store/detail/9P6SKKFKSHKM) [installer](https://magicpods.app/installer/MagicPods.appinstaller) | [website](https://magicpods.app/))
+
+<a id="star-history"></a>
+
+# 🔹 Star History
 
 <a href="https://www.star-history.com/#kavishdevar/librepods&type=date&legend=top-left">
  <picture>
@@ -232,30 +268,34 @@ A huge thank you to everyone supporting the project!
  </picture>
 </a>
 
-# License
+<a id="license"></a>
 
-LibrePods - AirPods liberated from Apple’s ecosystem
+# 📜 License
+
+🔹 LibrePods - AirPods liberated from Apple’s ecosystem
 Copyright (C) 2025 LibrePods contributors
 
-This program is free software: you can redistribute it and/or modify
+🔹 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 any later version.
 
-This program is distributed in the hope that it will be useful,
+🔹 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
-You should have received a copy of the GNU General Public License
+📜 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Trademark Notice
+<a id="trademark-notice"></a>
 
-The GPL does not grant any rights to use the LibrePods name, logo, or branding. The LibrePods name and logo may not be used for software, websites, domains, products, services, or other projects in a manner that suggests affiliation with, endorsement by, or association with the official LibrePods project without prior permission.
+# 🔹 Trademark Notice
 
-If you see any misuse of the LibrePods name or logo, please report it to [me@kavish.xyz](mailto:me@kavish.xyz).
+🌐 The GPL does not grant any rights to use the LibrePods name, logo, or branding. The LibrePods name and logo may not be used for software, websites, domains, products, services, or other projects in a manner that suggests affiliation with, endorsement by, or association with the official LibrePods project without prior permission.
 
-The SF Pro font used in the Android app is the property of Apple Inc.. This will be removed in future versions of the app and replaced with an open alternative soon.
+🔹 If you see any misuse of the LibrePods name or logo, please report it to [me@kavish.xyz](mailto:me@kavish.xyz).
 
-AirPods, AirPods Pro, AirPods Max, and the AirPods logo are trademarks of Apple Inc. The LibrePods project is not affiliated with or endorsed by Apple Inc. in any way.
+🔹 The SF Pro font used in the Android app is the property of Apple Inc.. This will be removed in future versions of the app and replaced with an open alternative soon.
+
+🔹 AirPods, AirPods Pro, AirPods Max, and the AirPods logo are trademarks of Apple Inc. The LibrePods project is not affiliated with or endorsed by Apple Inc. in any way.
